@@ -1,0 +1,45 @@
+#include<stdio.h>
+void main()
+{
+{
+ int n, c[10][10], v, s[10], d[10];
+ int i,j,w,num,min,u;
+ printf("Enter the no. of vertices ");
+ scanf("%d",&n);
+ printf("Enter the matrix \n");
+ for(i=0; i<n; i++)
+  for(j=0; j<n; j++)
+   scanf("%d",&c[i][j]);
+ printf("Enter the starting node ");
+ scanf("%d",&v);
+ for(i=0; i<n; i++)
+ {
+  d[i]=c[v][i];
+  s[i]=0;
+ }
+ s[v]=1;
+ for(num=2; num<=n-1; num++)
+ {
+  for(w=1; w<=n; w++)
+  {
+   min=999;
+   if(s[w]==0 && d[w]<min)
+   {
+    min=d[w];
+    u=w;
+   }
+  }
+  s[u]=1;
+  for(w=1; w<=n; w++)
+  {
+   if(s[w]==0)
+   {
+    if(d[w]>d[u]+c[u][w])
+     d[w]=d[u]+c[u][w];
+   }
+  }
+ }
+ for(i=0; i<n; i++)
+  if(i!=v)
+   printf("%d -> %d = %d \n",v,i,d[i]);
+}
