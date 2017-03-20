@@ -1,0 +1,40 @@
+#include<stdio.h>
+int visited[10];
+
+void main()
+{
+ int total=0,min,u,v;
+ int n,ne=1,c[10][10],i,j;
+ printf("Enter vertices");
+ scanf("%d",&n);
+ printf("Enter matrix");
+ for(i=1;i<=n;i++) 
+ {
+  for(j=1;j<=n;j++)
+    scanf("%d",&c[i][j]);
+   }
+visited[1]=1;
+
+while(ne<n)
+{
+ for(i=1,min=999;i<=n;i++)
+  {
+   for(j=1;j<=n;j++)
+  {
+    if(min>c[i][j])
+      if(visited[i]!=0)
+      { min= c[i][j];
+        u=i;
+        v=j;
+      }}}
+ if(visited[v]==0 || visited[u]==0)
+ {
+ne++;
+printf("The edge (%d,%d) is %d\n", u, v, min);
+total=total+min;
+visited[v]=1;
+ }
+c[u][v]=c[v][u]=999;
+}
+printf("\n%d",total);
+}
