@@ -1,7 +1,6 @@
 #include<stdio.h>
 void main()
 {
-{
  int n, c[10][10], v, s[10], d[10];
  int i,j,w,num,min,u;
  printf("Enter the no. of vertices ");
@@ -18,11 +17,13 @@ void main()
   s[i]=0;
  }
  s[v]=1;
+d[v]=1;
  for(num=2; num<=n-1; num++)
  {
+min=999;
   for(w=1; w<=n; w++)
   {
-   min=999;
+
    if(s[w]==0 && d[w]<min)
    {
     min=d[w];
@@ -41,5 +42,7 @@ void main()
  }
  for(i=0; i<n; i++)
   if(i!=v)
-   printf("%d -> %d = %d \n",v,i,d[i]);
-}
+   printf("%d to %d = %d \n",v,i,d[i]);
+   }
+   
+                                         
